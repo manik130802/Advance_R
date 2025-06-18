@@ -61,7 +61,7 @@ ggplot(mtcars, aes(x = hp, y = mpg)) +
     y = "Miles per Gallon (mpg)"
   ) +
   theme_minimal()
-
+```
 # Correlation Between MPG and Horsepower
 
 ```{r}
@@ -70,6 +70,19 @@ correlation <- cor(mtcars$mpg, mtcars$hp)
 correlation
 
 ```
+# MPG by Number of Cylinders
+
+```{r}
+# Boxplot of MPG by Cylinders
+ggplot(mtcars, aes(x = factor(cyl), y = mpg)) +
+  geom_boxplot(fill = "skyblue") +
+  labs(
+    title = "MPG Distribution by Number of Cylinders",
+    x = "Number of Cylinders",
+    y = "Miles per Gallon (mpg)"
+  ) +
+  theme_minimal()
+
 
 -   The scatterplot shows a ***negative relationship*** between ***horsepower and fuel efficiency***:
 
