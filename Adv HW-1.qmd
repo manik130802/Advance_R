@@ -82,7 +82,7 @@ ggplot(mtcars, aes(x = factor(cyl), y = mpg)) +
     y = "Miles per Gallon (mpg)"
   ) +
   theme_minimal()
-
+```
 
 -   The scatterplot shows a ***negative relationship*** between ***horsepower and fuel efficiency***:
 
