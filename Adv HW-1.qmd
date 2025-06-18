@@ -1,0 +1,73 @@
+---
+title: "Mt Car Dataset Analysis"
+author: "Manik Tomar & 24215275"
+format: 
+  pdf:
+    pdf-engine: xelatex
+    toc: true
+    number-sections: true
+editor: visual
+execute:
+  echo: false
+  error: false
+---
+
+\newpage
+
+# Introduction
+
+The **`mtcars`** dataset comes built-in with R and contains fuel consumption and design specifications for 32 cars. It includes variables such as **miles per gallon (*mpg*), number of cylinders (*cyl*), horsepower (*hp*), weight (*wt*), and more.**
+
+Some key variables in this dataset include:
+
+-   **mpg**: Miles/(US) gallon (fuel efficiency)
+-   **hp**: Gross horsepower (engine power)
+-   **wt**: Weight of the car (in 1000 lbs)
+
+# Summary Statistics
+
+Below is a summary of key variables — *mpg*, *hp*, and *wt* — presented in a neat table using `knitr::kable()`.This gives us more idea about the dataset and then we can perform further Analysis.
+
+```{r}
+# Load necessary library
+library(knitr)
+
+# Summary statistics
+summary_df <- summary(mtcars[, c("mpg", "hp", "wt")])
+kable(summary_df, caption = "Summary Statistics of mpg, hp, and wt in mtcars")
+
+```
+
+## From the summary:
+
+-   **Fuel efficiency (mpg)** ranges from **10.4 to 33.9**, with a mean of around **20 mpg**. This indicates a wide variation in car mileage among different models.
+-   **Horsepower (hp)** varies significantly, from as low as **52** to as high as **335**, suggesting some cars are much more powerful than others.
+-   The **weight (wt)** of the cars ranges from about **1.5 to 5.4 (in 1000 lbs)**, which can also affect fuel efficiency and power.
+
+***Since there is a variation in the fuel effiency(mpg) and Horsepower lets find out how it is related to each other***
+
+# MPG vs Horsepower
+
+```{r}
+# Load library
+library(ggplot2)
+
+# Create scatterplot
+ggplot(mtcars, aes(x = hp, y = mpg)) +
+  geom_point(color = "orange", size = 2) +
+  labs(
+    title = "Fuel Efficiency vs Horsepower",
+    x = "Horsepower (hp)",
+    y = "Miles per Gallon (mpg)"
+  ) +
+  theme_minimal()
+
+```
+
+-   The scatterplot shows a ***negative relationship*** between ***horsepower and fuel efficiency***:
+
+    -   Cars with ***higher horsepower tend to have lower mpg***.
+
+    -   This is ***expected as powerful engines consume more fuel***.
+
+    -   The pattern suggests that there is a ***trade-off between performance (hp) and fuel economy (mpg)***.
