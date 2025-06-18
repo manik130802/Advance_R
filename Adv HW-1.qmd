@@ -62,6 +62,13 @@ ggplot(mtcars, aes(x = hp, y = mpg)) +
   ) +
   theme_minimal()
 
+# Correlation Between MPG and Horsepower
+
+```{r}
+# Calculate correlation
+correlation <- cor(mtcars$mpg, mtcars$hp)
+correlation
+
 ```
 
 -   The scatterplot shows a ***negative relationship*** between ***horsepower and fuel efficiency***:
